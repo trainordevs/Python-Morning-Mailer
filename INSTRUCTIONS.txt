@@ -1,0 +1,7 @@
+(1) Select the work orders you need a status on and export them to an excel sheet from PPW.
+(2) Open the excel sheet and delete all columns except (they should be in this order): WO #, Date Due, Client, Address, Contractor
+(3) In the top left, click File -> Save As -> Browse. For the "Save as type", make sure you have "CSV (Comma delimited)" selected and save the file wherever you want.
+(4) Open the program and select the CSV file that you just saved.
+(5) Give the program a minute to send the emails. The program will automatically close when it is done.
+
+* The program creates a log file named "email_log_(TODAYS DATE)". You can open it and check that all of the emails were sent successfully.
