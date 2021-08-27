@@ -1,13 +1,9 @@
-import smtplib, ssl
+import smtplib, ssl, csv, sys, json, logging
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from tkinter import messagebox
 from tkinter.filedialog import askopenfilename
-import csv
-import sys
 from urllib.request import urlopen 
-import json
-import logging
 from datetime import date
 
 orders = {}
