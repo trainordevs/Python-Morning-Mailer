@@ -78,12 +78,16 @@ def send_email(csv_file, plaintext, html):
 
 #######################################
 
-## Your email in plaintext.
-plaintext = MIMEText("""\
-    """, "plain")
+def main():
+    ## Your email in plaintext.
+    plaintext = MIMEText("""\
+        """, "plain")
 
-## Your email in HTML.
-html = MIMEText("""\
-    """, "html")
+    ## Your email in HTML.
+    html = MIMEText("""\
+        """, "html")
 
-send_email(askopenfilename(), plaintext, html)
+    send_email(askopenfilename(), plaintext, html)
+
+if __name__ == '__main__':
+    main()
