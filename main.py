@@ -14,7 +14,11 @@ contractor_blacklist = []
 logging.basicConfig(filename="email_log_{d}".format(d = date.today()), filemode='a', format='%(asctime)s | %(levelname)s | %(message)s', datefmt='%H:%M:%S', level=logging.DEBUG)
 
 def send_email(csv_file, plaintext, html):
-    with open(csv_file) as file:
+    if not csv_file:
+        messagebox.showerror("No file selected.", "The program will now exit as you did not select a CSV file.")
+        sys.exit()
+    
+    with open(csv_file, 'r', encoding='utf8') as file:
         reader = csv.reader(file)
 
         col_count = len(next(reader))
