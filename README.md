@@ -4,7 +4,7 @@ This is a simple python script I created for a company to assist in automating s
 ## Executable
 This can be created in a .EXE program. I used pyinstaller to do this.
 
-    pyinstaller --onefile -w main.py
+    pyinstaller --onefile -w -i "icon.ico" -n "Python Mailer" main.py
 
 ## Configuration
 The configuration for this program is embedded in the program as this was meant to be distributed to employees of the company.
