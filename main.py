@@ -18,20 +18,28 @@ def send_email(csv_file, plaintext, html):
         messagebox.showerror("No file selected.", "The program will now exit as you did not select a CSV file.")
         sys.exit()
     
-    with open(csv_file, 'r', encoding='utf8') as file:
-        reader = csv.reader(file)
+    if not csv_file.lower().endswith('.csv'):
+        messagebox.showerror("Invalid file selection.", "The program will now exit as you did not select a CSV file.")
+        sys.exit()
+    
+    try:
+        with open(csv_file, 'r', encoding='utf8') as file:
+            reader = csv.reader(file)
 
-        col_count = len(next(reader))
-        if col_count != 5:
-            messagebox.showerror("Failed to Load CSV", "Your CSV should only have 5 columns: WO #, Date Due, Client, Address, Contractor")
-            sys.exit()
+            col_count = len(next(reader))
+            if col_count != 5:
+                messagebox.showerror("Failed to Load CSV", "Your CSV should only have 5 columns: WO #, Date Due, Client, Address, Contractor")
+                sys.exit()
 
-        for wo_num, date_due, client, address, contractor in reader:
-            if contractor not in contractor_blacklist:
-                if contractor in orders:
-                    orders[contractor].append([wo_num, date_due, client, address])
-                else:
-                    orders[contractor] = [[wo_num, date_due, client, address]]
+            for wo_num, date_due, client, address, contractor in reader:
+                if contractor not in contractor_blacklist:
+                    if contractor in orders:
+                        orders[contractor].append([wo_num, date_due, client, address])
+                    else:
+                        orders[contractor] = [[wo_num, date_due, client, address]]
+    except IOError as e:
+        messagebox.showerror("IO Error", e)
+        sys.exit()
     
     ## This is where the URL for a json file containing contractors and their emails.
     response = urlopen("")
